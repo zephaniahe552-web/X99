@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090b12">
+<title>X99 — Connect your world</title>
+<style>
+:root{--bg:#090b12;--panel:#121622;--panel2:#191f2e;--text:#f4f6fb;--muted:#a6aec1;--pink:#ff3e79;--blue:#6d7cff;--line:#282f42}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#090b12ed;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:900;letter-spacing:1px}.logo{display:grid;place-items:center;width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--pink),var(--blue));font-weight:1000;color:white;box-shadow:0 5px 20px #ff3e7933}
+button{border:0;color:white;font-weight:700;cursor:pointer;font-size:14px}.pill{border-radius:999px;background:var(--panel2);padding:10px 14px}.primary{background:linear-gradient(100deg,var(--pink),var(--blue));border-radius:12px;padding:11px 15px}
+.layout{max-width:1050px;margin:0 auto;display:grid;grid-template-columns:210px minmax(0,620px) 200px;gap:18px;padding:18px 14px}.side,.right{position:sticky;top:78px;align-self:start}.navitem{padding:13px 12px;border-radius:12px;color:var(--muted);margin-bottom:5px}.navitem.active,.navitem:hover{background:var(--panel2);color:white}.tagline{font-size:12px;color:var(--muted);line-height:1.5;margin:15px 8px}
+h2{font-size:19px;margin:4px 0 14px}.composer,.card,.rightbox{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:15px;margin-bottom:15px}.composer textarea,.commentbox{width:100%;background:#0d1019;border:1px solid var(--line);border-radius:12px;color:white;padding:12px;font:inherit;resize:vertical}.composer textarea{min-height:70px;margin:12px 0}.row{display:flex;align-items:center;gap:10px}.avatar{width:39px;height:39px;flex:0 0 39px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#2dd4bf,#6366f1);font-weight:900}.small{font-size:12px;color:var(--muted)}.posthead{display:flex;align-items:center;gap:10px}.posthead .grow{flex:1}.posttext{line-height:1.55;margin:14px 0}.video{width:100%;min-height:220px;max-height:480px;background:linear-gradient(145deg,#242b4b,#111522 55%,#452039);border-radius:13px;display:grid;place-items:center;overflow:hidden;color:#dfe3ff;text-align:center;padding:20px}.play{font-size:45px}.video video{width:100%;max-height:460px;display:block}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.actions button{background:var(--panel2);border-radius:10px;padding:10px 12px}.actions button.liked{color:#ff5a88}.comments{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}.commentline{font-size:13px;padding:8px 0;color:#e6e9f2}.commentform{display:flex;gap:7px;margin-top:8px}.commentform input{min-width:0;flex:1;background:#0d1019;border:1px solid var(--line);border-radius:10px;padding:10px;color:white}.commentform button{background:var(--blue);border-radius:10px;padding:0 12px}.rightbox p{font-size:13px;color:var(--muted);line-height:1.5}.badge{font-size:11px;color:#ffb9d0;background:#422035;padding:5px 8px;border-radius:99px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:800px){.layout{grid-template-columns:1fr;max-width:650px}.side,.right{position:static}.side{display:flex;gap:5px;overflow:auto}.navitem{white-space:nowrap;margin:0;padding:10px}.tagline,.right{display:none}.layout{padding:12px}.video{min-height:190px}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">X</div><span>X99</span></div><button class="pill" onclick="document.getElementById('postText').focus()">＋ Create</button></header>
+<div class="layout">
+<aside class="side">
+<div class="navitem active">⌂ &nbsp; For You</div><div class="navitem">▶ &nbsp; Short videos</div><div class="navitem">♡ &nbsp; Likes</div><div class="navitem">♧ &nbsp; Following</div><div class="navitem">✉ &nbsp; Chat (demo)</div>
+<div class="tagline">X99 — Connect your world.<br>Share moments, ideas and creativity.</div>
+</aside>
+<main>
+<h2>Welcome to X99 <span class="badge">BETA</span></h2>
+<div class="composer"><div class="row"><div class="avatar">X</div><div><b>Create a post</b><div class="small">Share something with the community</div></div></div>
+<textarea id="postText" placeholder="Unafikiria nini leo?"></textarea>
+<div class="row" style="justify-content:space-between;flex-wrap:wrap"><label class="small">Add a video (optional) <input id="videoFile" type="file" accept="video/*"></label><button class="primary" onclick="createPost()">Post ↗</button></div>
+</div>
+<div id="feed">
+<article class="card"><div class="posthead"><div class="avatar">X</div><div class="grow"><b>X99 Community</b><div class="small">@x99community · Welcome post</div></div><span class="badge">Official</span></div><div class="posttext">Karibu X99! 🎉 Hapa unaweza kushiriki mawazo, kupenda post na kuacha comment. Hii ni demo ya mwanzo; akaunti halisi, video hosting na chat ya moja kwa moja vinahitaji backend.</div><div class="video"><div><div class="play">▶</div><b>Short videos are coming</b><div class="small">Chagua video kwenye sehemu ya Create ili kuijaribu hapa.</div></div></div><div class="actions"><button onclick="likePost(this)">♡ <span>Like</span> · <span class="count">0</span></button><button onclick="toggleComments(this)">💬 Comments</button><button onclick="follow(this)">＋ Follow</button></div><div class="comments" hidden><div class="commentlist"></div><div class="commentform"><input placeholder="Andika comment..." maxlength="300"><button onclick="addComment(this)">Send</button></div></div></article>
+</div>
+</main>
+<aside class="right"><div class="rightbox"><h2>About X99</h2><p>Social platform ya kushiriki posts na short-video demos.</p><p>Prototype version 0.1</p><span class="badge">Made for the community</span></div><div class="rightbox"><b>Coming next</b><p>Real user accounts, online database, secure messaging and video storage.</p></div></aside>
+</div><footer>© X99 · Prototype demo · Protect your privacy online.</footer>
+<script>
+function likePost(btn){btn.classList.toggle('liked');const c=btn.querySelector('.count');let n=Number(c.textContent);c.textContent=btn.classList.contains('liked')?n+1:Math.max(0,n-1);btn.querySelector('span').textContent=btn.classList.contains('liked')?'Liked':'Like'}
+function toggleComments(btn){const box=btn.closest('.card').querySelector('.comments');box.hidden=!box.hidden}
+function follow(btn){let yes=btn.dataset.follow==='yes';btn.dataset.follow=yes?'no':'yes';btn.textContent=yes?'＋ Follow':'✓ Following'}
+function addComment(btn){const input=btn.previousElementSibling;const val=input.value.trim();if(!val)return;const line=document.createElement('div');line.className='commentline';const b=document.createElement('b');b.textContent='You: ';line.append(b,document.createTextNode(val));btn.closest('.comments').querySelector('.commentlist').append(line);input.value=''}
+function createPost(){const text=document.getElementById('postText').value.trim();const file=document.getElementById('videoFile').files[0];if(!text&&!file){alert('Andika post au chagua video kwanza.');return}const card=document.createElement('article');card.className='card';const head=document.createElement('div');head.className='posthead';head.innerHTML='<div class="avatar">Y</div><div class="grow"><b>You</b><div class="small">Just now</div></div>';card.append(head);if(text){const p=document.createElement('div');p.className='posttext';p.textContent=text;card.append(p)}if(file){const wrap=document.createElement('div');wrap.className='video';const v=document.createElement('video');v.controls=true;v.src=URL.createObjectURL(file);wrap.append(v);card.append(wrap)}const actions=document.createElement('div');actions.className='actions';actions.innerHTML='<button onclick="likePost(this)">♡ <span>Like</span> · <span class="count">0</span></button><button onclick="toggleComments(this)">💬 Comments</button><button onclick="follow(this)">＋ Follow</button>';card.append(actions);const comments=document.createElement('div');comments.className='comments';comments.hidden=true;comments.innerHTML='<div class="commentlist"></div><div class="commentform"><input placeholder="Andika comment..." maxlength="300"><button onclick="addComment(this)">Send</button></div>';card.append(comments);document.getElementById('feed').prepend(card);document.getElementById('postText').value='';document.getElementById('videoFile').value=''}
+</script>
+</body></html>
